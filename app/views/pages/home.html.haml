@@ -1,10 +1,11 @@
 .container.page-container
   .row.h-100
-    .col-md-4.offset-md-4.h-100.d-flex.flex-column.justify-content-center
-      = form_tag display_followers_path, method: :get do
-        = text_field_tag :query, params[:query], placeholder: 'Enter twitter name'
-        %button
-          Search
+    .col-md-8.offset-md-2.col-lg-6.offset-lg-3.col-xl-4.offset-xl-4.h-100.d-flex.flex-column.justify-content-center.align-items-center
+      = form_tag display_followers_path, method: :get, class: 'form-inline' do
+        .form_group
+          = text_field_tag :query, params[:query], placeholder: 'Enter twitter name', class: 'form-control'
+          %button.btn.btn-primary
+            Search
       - if current_user
         %div
           = link_to "View your history", search_items_path

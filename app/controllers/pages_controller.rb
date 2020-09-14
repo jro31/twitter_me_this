@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @follower_details = follower_details
 
     if !@follower_details || @follower_details.empty?
-      flash[:alert] = "Something went wrong. Please try again later."
+      flash[:alert] = @error || "Something went wrong. Please try again later."
       redirect_to root_path
     elsif current_user
       @search_item = current_user.search_items.new(query: @query)
@@ -39,11 +39,12 @@ class PagesController < ApplicationController
 
   def follower_ids
     begin
-      # client.follower_ids(@query, {count: 5} )&.to_a # Check that 'count' works
-      [2233382765, 1302890415557877765] # Mock IDs
+      client.follower_ids(@query, {count: 5} )&.to_a # Check that 'count' works
+      # [2233382765, 1302890415557877765] # Mock IDs
     rescue StandardError => e
       puts "🎉🎉 Unable to fetch follower IDs 🎉🎉"
       puts "❌❌ #{e} ❌❌"
+      @error = e
       nil
     end
   end

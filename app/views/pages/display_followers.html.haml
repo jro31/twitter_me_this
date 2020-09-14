@@ -1,17 +1,21 @@
-%h1
-  #{@query}'s followers
+.container.page-container
+  .row
+    .col-md-4.offset-md-4.text-center.mt-5
+      %h1
+        #{@query}'s followers
 
-%p
-  = @follower_details
+      - @follower_details.values.each do |follower|
+        %p
+          = follower
 
-%p
-  - if current_user
-    = simple_form_for @search_item do |f|
-      = f.hidden_field :user_id
-      = f.hidden_field :query
-      = f.simple_fields_for :search_results do |r|
-        = r.hidden_field :twitter_id_number
-        = r.hidden_field :twitter_screen_name
-      = f.submit "Save your search"
-  - else
-    Sign-in to save your search history
+      %p
+        - if current_user
+          = simple_form_for @search_item do |f|
+            = f.hidden_field :user_id
+            = f.hidden_field :query
+            = f.simple_fields_for :search_results do |r|
+              = r.hidden_field :twitter_id_number
+              = r.hidden_field :twitter_screen_name
+            = f.submit "Save your search", class: 'btn btn-success'
+        - else
+          Create an account to save your search history

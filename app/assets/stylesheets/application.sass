@@ -15,10 +15,12 @@
 
 body
   min-height: 100vh
-  background-image: url("background.jpg")
+  background-image: url("background_xxl.jpg")
   background-position: 43% 50%
   background-size: cover
   background-repeat: no-repeat
+  @media (min-width: 2000px)
+    background-image: url("background.jpg")
 
   .page-container
     height: $page-height

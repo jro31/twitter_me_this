@@ -4,9 +4,16 @@
       %h1.text-center
         Search history
 
-    - @search_items.each do |search_item|
-      .col-4.text-center
-        = search_item.query
-      .col-8.text-center
-        - search_item.search_results.each do |result|
-          = result.twitter_screen_name
+    - if @search_items.any?
+      - @search_items.each do |search_item|
+        .col-4.text-center
+          = search_item.query
+        .col-8.text-center
+          - search_item.search_results.each do |result|
+            = result.twitter_screen_name
+    - else
+      .col-12
+        %p.text-center
+          Nothing but sadness here.
+          = succeed '.' do
+            = link_to "Do a search instead", root_path
