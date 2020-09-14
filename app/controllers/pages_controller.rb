@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @follower_ids = follower_ids
     @follower_details = follower_details
 
-    if !@follower_details ||  @follower_details.empty?
+    if !@follower_details || @follower_details.empty?
       flash[:alert] = "Something went wrong. Please try again later."
       redirect_to root_path
     elsif current_user

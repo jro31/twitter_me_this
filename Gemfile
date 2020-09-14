@@ -21,6 +21,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'haml'
 gem "figaro"
 gem "twitter"
+gem "pundit"
 
 group :development, :test do
   gem 'pry-byebug'

@@ -12,7 +12,7 @@ class SearchItemsController < ApplicationController
   end
 
   def index
-    @search_items = current_user.search_items
+    @search_items = policy_scope(SearchItem)
   end
 
   private
