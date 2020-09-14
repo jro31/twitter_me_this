@@ -1,0 +1,12 @@
+.container.page-container
+  .row
+    .col-12
+      %h1.text-center
+        Search history
+
+    - @search_items.each do |search_item|
+      .col-4.text-center
+        = search_item.query
+      .col-8.text-center
+        - search_item.search_results.each do |result|
+          = result.twitter_screen_name

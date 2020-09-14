@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_163851) do
 
   create_table "search_results", force: :cascade do |t|
     t.bigint "search_item_id", null: false
-    t.integer "twitter_id_number"
+    t.string "twitter_id_number"
     t.string "twitter_screen_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
