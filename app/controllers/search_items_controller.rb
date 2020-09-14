@@ -1,5 +1,4 @@
 class SearchItemsController < ApplicationController
-
   def create
     @search_item = SearchItem.new(search_item_params)
 
@@ -13,8 +12,6 @@ class SearchItemsController < ApplicationController
   end
 
   def index
-    return unless current_user
-
     @search_items = current_user.search_items
   end
 

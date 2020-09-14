@@ -28,8 +28,9 @@ class PagesController < ApplicationController
     @follower_ids.each do |follower_id|
       begin
         followers[follower_id.to_s] = client.user(follower_id).screen_name
-      rescue
+      rescue StandardError => e
         puts "🎉🎉 Unable to fetch screen name 🎉🎉"
+        puts "❌❌ #{e} ❌❌"
         next
       end
     end
