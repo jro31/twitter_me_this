@@ -39,10 +39,10 @@ class PagesController < ApplicationController
 
   def follower_ids
     begin
-      client.follower_ids(@query, {count: 5} )&.to_a # Check that 'count' works
-      # [2233382765, 1302890415557877765] # Mock IDs
+      # client.follower_ids(@query, { count: 5 })&.to_a
+      client.friend_ids(@query, { count: 200 })&.to_a
     rescue StandardError => e
-      puts "🎉🎉 Unable to fetch follower IDs 🎉🎉"
+      puts "🎉🎉 Unable to fetch IDs 🎉🎉"
       puts "❌❌ #{e} ❌❌"
       @error = e
       nil
